@@ -1,4 +1,4 @@
-<%= @location.name %>
+<%= @trip.name %>
 
 <%= link_to 'New Location', new_trip_location_path(@trip) %>
 
@@ -8,7 +8,7 @@
       <ul>
         <% @trip.locations.each do |location| %>
           <li>
-            <%= link_to location.name, location %>
+            <%= link_to location.name, [@trip, location] %>
             <%= link_to "Delete", @location, method: :delete do %>
             <% end %>
           </li>

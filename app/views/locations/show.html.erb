@@ -6,7 +6,6 @@
     <%= @location.address.city %>
     <%= @location.address.state %>
     <%= @location.address.zip %>
-  
   <% else%>
     <%= link_to 'New Address', new_trip_location_path(@trip) %>
   <% end %>

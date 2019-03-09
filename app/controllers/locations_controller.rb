@@ -42,7 +42,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   end
 
   def set_trip
-    @trip = current_user.trips.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
   end
 
   def set_location
