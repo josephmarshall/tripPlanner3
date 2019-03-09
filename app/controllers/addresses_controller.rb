@@ -4,9 +4,7 @@ class AddressesController < ApplicationController
 
 
   def index
-
     @address = @location.addresses
-    # render json: @list.tasks
   end
 
   def show
@@ -15,6 +13,7 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
+    render partial: "form"
 
     # this stores the previous url, 
     # which allows the user to navigate back to the previous page
@@ -23,26 +22,32 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = @locations.addresses.new(address_params)
-
+    # binding.pry
+    @address = Address.new(address_params)
+    @address[:location_id] = @location[:id]
     if @address.save
-      flash[:success] = "Address Created"
-      redirect_to trip_path(@location[:trip_id])
-      # render json: @address
+      redirect_to trip_location_path(@location[:trip_id], @location[:id])
     else
-      flash[:error] = "Error #{@address.errors.full_messages.join("\n")}"
-      render_error(@address)
+      render partial: "form"
     end
 
   end
 
   def edit
-    # $previous_url = request.referer
+    render partial: "form"
+  end
+
+  def update
+    if @address.update(address_params)
+      redirect_to trip_location_path(@location[:trip_id], @location[:id])
+    else
+      render partial: "form"
+    end  
   end
 
   def destroy
     @address.destroy
-    render json: { message: 'removed' }, status: :ok
+    redirect_to trip_location_path(@location[:trip_id], @location[:id])
   end
 
   private 
@@ -55,6 +60,6 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:street, :city, :state, :zip, :lat, :long, :trip_id)
+    params.require(:address).permit(:street, :city, :state, :zip, :lat, :long, :location_id)
   end
 end
