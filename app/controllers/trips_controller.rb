@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: [:show, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
     @trips = current_user.trips
@@ -15,9 +15,7 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.create(trip_params)
-    @trip[:user_id] = current_user.id
 
-    # binding.pry
     if @trip.save
       redirect_to @trip
     else
@@ -25,6 +23,19 @@ class TripsController < ApplicationController
     end
   end
 
+  def edit
+    render partial: "form"
+  end
+  
+  def update
+    if @trip.update(trip_params)
+      redirect_to @trip
+    else
+      render partial: "form"
+    end
+  end
+  
+  
   def destroy
     @trip.destroy
     redirect_to trips_path
@@ -32,7 +43,7 @@ class TripsController < ApplicationController
 
   private
     def set_trip
-      @trip = Trip.find(params[:id])
+      @trip = Trip.find(current_user.id, params[:id])
     end
 
     def trip_params
