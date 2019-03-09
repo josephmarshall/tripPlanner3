@@ -15,7 +15,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
     if @location.save
       redirect_to trip_location_path(@trip)
     else
-    render location_form
+    render partial: "form"
     end
   end
 
@@ -26,7 +26,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
     if @location.update(location_params)
       redirect_to trip_location_path(@trip)
     else
-      render location_form
+      render partial: "form"
     end   
   end
 
