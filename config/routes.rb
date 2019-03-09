@@ -5,7 +5,11 @@ root 'trips#index'
 
   resources :trips do
     resources :locations
-    end
+  end
+
+  resources :trips do
+    resources :reviews
+  end
 
   resources :locations do
     resources :addresses
