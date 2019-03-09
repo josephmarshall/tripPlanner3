@@ -4,9 +4,7 @@ class AddressesController < ApplicationController
 
 
   def index
-
     @address = @location.addresses
-    # render json: @list.tasks
   end
 
   def show
@@ -15,11 +13,6 @@ class AddressesController < ApplicationController
 
   def new
     @address = Address.new
-
-    # this stores the previous url, 
-    # which allows the user to navigate back to the previous page
-    # from wherever they originally navigated to the create new address
-    # $previous_url = request.referer 
   end
 
   def create
@@ -28,7 +21,6 @@ class AddressesController < ApplicationController
     if @address.save
       flash[:success] = "Address Created"
       redirect_to trip_path(@location[:trip_id])
-      # render json: @address
     else
       flash[:error] = "Error #{@address.errors.full_messages.join("\n")}"
       render_error(@address)
@@ -37,7 +29,6 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    # $previous_url = request.referer
   end
 
   def destroy

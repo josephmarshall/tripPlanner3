@@ -46,7 +46,6 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   end
 
   def set_location
-    # binding.pry
     @location = Location.find(params[:id])
   end
 
