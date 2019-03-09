@@ -1,0 +1,12 @@
+<%= form_with(model: [@trip, @location], local: true, class: "form-horizontal") do |f| %>
+  <br />
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, required: true, placeholder: "Location Name" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :days %>
+    <%= f.text_field :days, placeholder: "Days" %>
+  </div>
+  <%= f.submit nil, class: "ui blue button" %>
+<% end %>
