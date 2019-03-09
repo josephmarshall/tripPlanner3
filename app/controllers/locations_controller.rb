@@ -2,8 +2,8 @@ class LocationsController < ApplicationController
 before_action :set_trip
 before_action :set_location, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @locations = @trip.locations
+  def show
+    
   end
   
   def new
@@ -46,7 +46,8 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   end
 
   def set_location
-    @location = Location.find(@trip.id, params[:id])
+    # binding.pry
+    @location = Location.find(params[:id])
   end
 
 end
