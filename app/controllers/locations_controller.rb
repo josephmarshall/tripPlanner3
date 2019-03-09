@@ -8,18 +8,14 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   
   def new
     @location = Location.new
-    render partial: "form"
   end
 
   def create
     @location = Location.new(location_params)
-    @location[:trip_id] = @trip[:id]
-    # binding.pry
-
     if @location.save
-      redirect_to trip_path(@trip)
+      redirect_to trip_location_path(@trip)
     else
-      render partial: "form"
+    render partial: "form"
     end
   end
 
@@ -36,7 +32,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @location.destroy
-    redirect_to @trip
+    redirect_to trip_location_path(@trip)
   end
 
   private
@@ -50,6 +46,7 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   end
 
   def set_location
+    # binding.pry
     @location = Location.find(params[:id])
   end
 
