@@ -1,15 +1,19 @@
-<nav class="container">
-  <div class="row">
-  <div class="col-sm">
-  <%= link_to "Trips", trips_path, class: "item" %>
-  <div class="col-sm">
-  <%= link_to "+", new_trip_path, class: "item" %>
-  <div class="right menu">
-    <% if current_user %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>
-    <% else %>
-      <%= link_to "Register", new_user_registration_path, class: "item" %>
-      <%= link_to "Login", new_user_session_path, class: "item" %>
-    <% end %>
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav_link active" href="/trips">Trips</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav_link active" href="/trips/new">+</a>
+  </li>
+</ul>
+    <div class="right menu">
+      <% if current_user %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>
+      <% else %>
+        <%= link_to "Register", new_user_registration_path, class: "item" %>
+        <%= link_to "Login", new_user_session_path, class: "item" %>
+      <% end %>
+    </div>
   </div>
-</nav>
+</div>
+
