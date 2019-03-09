@@ -8,8 +8,8 @@ end
   Location.create(name: Faker::Address.city, days: rand(1..10), trip_id: rand(1..3))
 end
 
-30.times do
-  Address.create(street: Faker::Address.street_name, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, location_id: rand(1..30))
+for location_id in 1..30 do
+  Address.create(street: Faker::Address.street_name, city: Faker::Address.city, state: Faker::Address.state_abbr, zip: Faker::Address.zip, location_id: location_id)
 end
 
 puts "seeded."
