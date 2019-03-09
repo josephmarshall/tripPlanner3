@@ -4,7 +4,7 @@
     <img class="logo" alt="logo_name" src="/voyager_logos/logo_voyager.png" height="50"/>
     <%= link_to "Trips", trips_path, class: "item" %>
     <%= link_to "+", new_trip_path, class: "item" %>
-    <%= link_to "Highlighted Trips", trip_random_trips_path, class: "item" %>
+    <%= link_to "Highlighted Trips", random_trips_path, class: "item" %>
   </div>
   <div class="right menu">
     <% if current_user %>

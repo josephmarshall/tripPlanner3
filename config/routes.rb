@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get '/random_trips', to: 'trips#random_trips'
+
   resources :trips do
     resources :locations
     get 'random_trips', on: :collection

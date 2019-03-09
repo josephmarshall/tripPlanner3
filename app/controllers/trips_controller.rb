@@ -9,9 +9,9 @@ class TripsController < ApplicationController
   end
 
   def random_trips
-    binding.pry
+    # binding.pry
     @trips = current_user.trips
-    redirect_to trip_random_trips_path
+    redirect_to random_trips_path
   end
 
   def new
