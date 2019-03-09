@@ -1,0 +1,15 @@
+<h1>View Possible Trips</h1>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul>
+        <% @trips.each do |trip| %>
+          <li>
+            <%= link_to trip.name, trip %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

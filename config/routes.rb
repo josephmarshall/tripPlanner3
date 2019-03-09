@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-root 'trips#index'
+  root 'trips#index'
+  
 
   devise_for :users
 
   resources :trips do
     resources :locations
-    end
+    get 'random_trips', on: :collection
+  end
 
   resources :locations do
     resources :addresses

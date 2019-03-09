@@ -8,6 +8,12 @@ class TripsController < ApplicationController
   def show
   end
 
+  def random_trips
+    binding.pry
+    @trips = current_user.trips
+    redirect_to trip_random_trips_path
+  end
+
   def new
     @trip = Trip.new
     render partial: "form"
