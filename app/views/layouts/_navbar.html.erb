@@ -1,17 +1,12 @@
-<nav class="ui dark grey inverted pointing huge menu">
+<nav class="ui grey inverted pointing huge menu">
   <div class="left menu">
-    <img class="logo" alt="logo_camera" src="/voyager_logos/logo_camera_only.png" height="50"/>
-    <img class="logo" alt="logo_name" src="/voyager_logos/logo_voyager.png" height="50"/>
     <%= link_to "Trips", trips_path, class: "item" %>
     <%= link_to "+", new_trip_path, class: "item" %>
+    <%# <%= link_to "Boards", boards_path, class: "item" %>
   </div>
   <div class="right menu">
     <% if current_user %>
-      <% if current_user.first_name %>
-        <%= link_to current_user.full_name, edit_user_registration_path, class: "item" %>
-      <% else %>
-        <%= link_to current_user.email, edit_user_registration_path, class: "item" %>
-      <% end %>
+      <%= link_to current_user.email, edit_user_registration_path(@user),class: "item" %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "item" %>
     <% else %>
       <%= link_to 'Login', new_user_session_path, class: "item" %>

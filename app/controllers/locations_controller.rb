@@ -24,7 +24,6 @@ before_action :set_location, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
-    render partial: "form"
   end
 
   def update

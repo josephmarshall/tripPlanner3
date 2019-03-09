@@ -14,6 +14,11 @@ class AddressesController < ApplicationController
   def new
     @address = Address.new
     render partial: "form"
+
+    # this stores the previous url, 
+    # which allows the user to navigate back to the previous page
+    # from wherever they originally navigated to the create new address
+    # $previous_url = request.referer 
   end
 
   def create
@@ -21,8 +26,7 @@ class AddressesController < ApplicationController
     @address = Address.new(address_params)
     @address[:location_id] = @location[:id]
     if @address.save
-      flash[:success] = "Address Created"
-      redirect_to trip_path(@location[:trip_id])
+      redirect_to trip_location_path(@location[:trip_id], @location[:id])
     else
       render partial: "form"
     end

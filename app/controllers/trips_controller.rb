@@ -18,7 +18,7 @@ class TripsController < ApplicationController
     @trip[:user_id] = current_user.id
 
     if @trip.save
-      redirect_to trips_path
+      redirect_to @trip
     else
       render partial: "form"
     end
@@ -30,7 +30,7 @@ class TripsController < ApplicationController
   
   def update
     if @trip.update(trip_params)
-      redirect_to trips_path
+      redirect_to @trip
     else
       render partial: "form"
     end
