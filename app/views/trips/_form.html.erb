@@ -1,0 +1,16 @@
+<%= form_with(model: @trip, local: true, class: "form-horizontal") do |f| %>
+  <br />
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, required: true, placeholder: "Location Name" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+  <div class="form-group">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+  <%= f.submit nil %>
+<% end %>
