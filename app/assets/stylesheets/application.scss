@@ -1,2 +1,13 @@
 @import "bootstrap";
 @import "semantic-ui";
+
+.trashcan{
+  height: 15px;
+  width: 15px;
+}
+
+.trip-card-container{
+  display: flex; 
+  flex-direction: row;
+  flex-wrap: wrap;
+}
