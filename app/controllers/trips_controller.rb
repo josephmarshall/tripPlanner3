@@ -1,11 +1,37 @@
 class TripsController < ApplicationController
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+
   def index
-    @location = Trip.find(1).locations.find(1)
-    @address = Trip.find(1).locations.find(1).address
+    @trips = Trip.all
   end
 
   def show
   end
 
+  def new
+    @trip = Trip.new
+  end
 
+  def create
+    @trip = Trip.create(trip_params)
+    if @trip.save
+      redirect_to @trip
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @trip.destroy
+    redirect_to trips_path
+  end
+
+  private
+    def set_trip
+      @trip = Trip.find(params[:id])
+    end
+
+    def trip_params
+      params(:trip).permit(:name, :start_date, :end_date)
+    end
 end
