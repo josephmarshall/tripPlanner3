@@ -27,7 +27,8 @@ class AddressesController < ApplicationController
 
     if @address.save
       flash[:success] = "Address Created"
-      render json: @address
+      redirect_to trip_path(@location[:trip_id])
+      # render json: @address
     else
       flash[:error] = "Error #{@address.errors.full_messages.join("\n")}"
       render_error(@address)
@@ -54,6 +55,6 @@ class AddressesController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:street, :city, :state, :zip, :lat, :long)
+    params.require(:address).permit(:street, :city, :state, :zip, :lat, :long, :trip_id)
   end
 end
