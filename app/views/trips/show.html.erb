@@ -1,8 +1,8 @@
 <h1><%= @trip.name %></h1>
-<%= link_to 'New Location', new_trip_location_path(@trip) %>
-<br />
 <%= link_to 'Edit Trip', edit_trip_path(@trip) %> |
 <%= link_to "Delete Trip", @trip, method: :delete %>
+<br />
+<%= link_to 'New Location', new_trip_location_path(@trip) %>
 <hr />
 <ul>
   <% @trip.locations.each do |location| %>
@@ -12,3 +12,16 @@
     </li>
   <% end %>
 </ul>
+<hr />
+<%= link_to 'New Review', new_trip_review_path(@trip) %>
+<br />
+<h2>Reviews</h2>
+<div class="container">
+  <% @trip.reviews.each do |review| %>
+    <%= render "reviews/review", { review: review } %>
+    <% if @trip.reviews %>
+      <%= link_to 'Edit Review', edit_trip_review_path(@trip, review) %> |
+      <%= link_to 'Delete Review', trip_review_path(@trip, review) , method: :delete %>
+    <% end %>
+  <% end %>
+</div>
