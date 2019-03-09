@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @trips = Trip.all
+    @trips = current_user.trips
   end
 
   def show
@@ -10,14 +10,18 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    render partial: "form"
   end
 
   def create
     @trip = Trip.create(trip_params)
+    @trip[:user_id] = current_user.id
+
+    # binding.pry
     if @trip.save
       redirect_to @trip
     else
-      render :new
+      render partial: "form"
     end
   end
 
@@ -32,6 +36,6 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params(:trip).permit(:name, :start_date, :end_date)
+      params.require(:trip).permit(:user_id, :name, :start_date, :end_date)
     end
 end
