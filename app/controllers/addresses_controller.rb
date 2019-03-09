@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
 
 
   def index
-    binding.pry
+
     @address = @location.addresses
     # render json: @list.tasks
   end
