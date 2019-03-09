@@ -1,19 +1,13 @@
-<%= @trip.name %>
-
-<%= link_to 'New Location', new_trip_location_path(@trip) %>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <ul>
-        <% @trip.locations.each do |location| %>
-          <li>
-            <%= link_to location.name, [@trip, location] %>
-            <%= link_to "Delete", @location, method: :delete do %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
+<h1><%= trip.name %></h1>
+<%= link_to 'New Trip', new_trip_path %>
+<%= link_to 'Edit', @trip %>
+<%= link_to "Delete", trip, method: :delete %>
+<hr />
+<ul>
+  <% @locations.each do |location| %>
+    <li>
+      <%= link_to location.name, (@trip, location) %>
+      <%= link_to "Delete", (@trip, location), method: :delete %>
+    </li>
+  <% end %>
+</ul>
