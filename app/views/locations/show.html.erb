@@ -1,13 +1,16 @@
-<div class="container">
+<h2><%= @location.name %></h2>
+  <%= link_to 'Edit Location', edit_trip_location_path(@trip) %> |
+  <%= link_to 'Delete Location', [@trip, @location], method: :delete %>
 
-  <% if @location.name %>
+<div class="container">
+  <% if @location.address %>
     <%= @location.name %>
     <%= @location.address.street %>
     <%= @location.address.city %>
     <%= @location.address.state %>
     <%= @location.address.zip %>
+    <%= link_to 'Delete Address', [@location, @location.address], method: :delete  %>
   <% else%>
-    <%= link_to 'New Address', new_trip_location_path(@trip) %>
+    <%= link_to 'New Address', new_location_address_path(@location) %>
   <% end %>
-  
 </div>
