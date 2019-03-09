@@ -9,8 +9,7 @@
         <% @trips.each do |trip| %>
           <li>
             <%= link_to trip.name, trip %>
-            <%= link_to "Delete", @trip, method: :delete do %>
-            <% end %>
+            <%= link_to "Delete", trip, method: :delete %>
           </li>
         <% end %>
       </ul>
